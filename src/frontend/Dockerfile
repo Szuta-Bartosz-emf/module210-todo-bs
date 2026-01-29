@@ -1,23 +1,20 @@
-#Image de base nginx, un serveur web très utilisé
+# Image de base nginx (Debian)
 FROM nginx:latest
+
 # Copie vos fichiers statiques dans le répertoire par défaut d'NGINX
 COPY . /usr/share/nginx/html
 
-# Expose le port 80 pour servir l'application
-EXPOSE 80
+# Installer curl (Debian)
+RUN apt-get update \
+    && apt-get install -y curl \
+    && rm -rf /var/lib/apt/lists/*
 
-# ajouter curl
-RUN apk add --no-cache curl
-
-# copier le script
+# Copier le script d'entrée
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
+# Expose le port 80
+EXPOSE 80
+
+# Lancer le script au démarrage
 ENTRYPOINT ["/entrypoint.sh"]
-
-# Démarre NGINX
-CMD ["nginx", "-g", "daemon off;"]
-
-
-
-

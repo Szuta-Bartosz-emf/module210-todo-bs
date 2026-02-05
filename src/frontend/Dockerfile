@@ -9,12 +9,6 @@ RUN apt-get update \
     && apt-get install -y curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Copier le script d'entrée
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-
 # Expose le port 80
 EXPOSE 80
 
-# Lancer le script au démarrage
-ENTRYPOINT ["/entrypoint.sh"]

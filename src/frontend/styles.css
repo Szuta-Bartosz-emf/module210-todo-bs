@@ -13,7 +13,7 @@ body {
 
 /* Conteneur principal */
 .app-container {
-  background: #fff;
+  background: #9b00d8;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -41,7 +41,7 @@ body {
   flex: 1;
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #ddd;
+  border: 1px solid #ff0000;
   border-radius: 8px 0 0 8px;
   outline: none;
   transition: border-color 0.3s ease;

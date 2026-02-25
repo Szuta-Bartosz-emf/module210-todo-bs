@@ -12,7 +12,7 @@ jobs:
 
       - name: Vérifier si index.html existe
         run: |
-          if [ -f frontend/index.html ]; then
+          if [ -f src/frontend/index.html ]; then
             echo "Le fichier index.html existe"
           else
             echo "Erreur : index.html n’existe pas!"

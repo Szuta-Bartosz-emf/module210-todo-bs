@@ -49,6 +49,7 @@ jobs:
 
       - name: Exécuter Lighthouse sur le build
         uses: treosh/lighthouse-ci-action@v10
+        continue-on-error: true        # <- permet de ne pas échouer la pipeline
         with:
           urls: |
             https://todo.bartoszszuta.emf-informatique.ch

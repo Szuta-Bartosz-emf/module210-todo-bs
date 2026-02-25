@@ -61,7 +61,8 @@ jobs:
   uses: treosh/lighthouse-ci-action@v10
   with:
     urls: |
-      https://<TON-URL-AZURE>.azurestaticapps.net
+      https://https://todo.bartoszszuta.emf-informatique.ch/.azurestaticapps.net
     uploadArtifacts: true
     temporaryPublicStorage: true
  action: "close"
+

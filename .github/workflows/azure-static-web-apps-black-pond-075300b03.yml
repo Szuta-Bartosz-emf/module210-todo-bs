@@ -55,4 +55,13 @@ jobs:
         id: closepullrequest
         uses: Azure/static-web-apps-deploy@v1
         with:
-          action: "close"
+         
+
+        - name: Exécuter Lighthouse sur le build
+  uses: treosh/lighthouse-ci-action@v10
+  with:
+    urls: |
+      https://<TON-URL-AZURE>.azurestaticapps.net
+    uploadArtifacts: true
+    temporaryPublicStorage: true
+ action: "close"

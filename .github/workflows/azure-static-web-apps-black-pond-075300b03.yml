@@ -48,13 +48,13 @@ jobs:
           github_id_token: ${{ steps.idtoken.outputs.result }}
 
       - name: Exécuter Lighthouse sur le build
-        uses: treosh/lighthouse-ci-action@v10
-        with:
-          urls: |
-            https://todo.bartoszszuta.emf-informatique.ch
-          uploadArtifacts: true
-          temporaryPublicStorage: true
-          configPath: ./lighthouserc.json
+  uses: treosh/lighthouse-ci-action@v10
+  with:
+    urls: |
+      https://todo.bartoszszuta.emf-informatique.ch
+    temporaryPublicStorage: true
+    uploadArtifacts: false
+    configPath: ./lighthouserc.json
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
@@ -66,3 +66,4 @@ jobs:
         uses: Azure/static-web-apps-deploy@v1
         with:
           action: "close"
+

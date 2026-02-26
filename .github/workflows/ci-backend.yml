@@ -1,0 +1,34 @@
+name: Build and push Docker image to ACR
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'backend/**'   # Important pour l'étape 5
+
+env:
+  REGISTRY: ${{ secrets.MY_REGISTRY }}
+  IMAGE_NAME: backend-app
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Login to Azure Container Registry
+        run: |
+          echo ${{ secrets.MY_PASSWORD_REGISTRY }} | docker login $REGISTRY \
+          -u ${{ secrets.MY_USER_REGISTRY }} \
+          --password-stdin
+
+      - name: Build Docker image
+        run: |
+          docker build -t $REGISTRY/$IMAGE_NAME:${{ github.sha }} ./backend
+
+      - name: Push Docker image
+        run: |
+          docker push $REGISTRY/$IMAGE_NAME:${{ github.sha }}

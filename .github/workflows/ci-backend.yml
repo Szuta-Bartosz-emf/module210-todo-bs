@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'backend/**'   # Important pour l'étape 5
+      - 'src/backend/**'   # Important pour l'étape 5
 
 env:
   REGISTRY: ${{ secrets.MY_REGISTRY }}
